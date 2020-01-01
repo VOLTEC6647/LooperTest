@@ -1,0 +1,59 @@
+{
+	"chassis": {
+		"pid": {
+			"p": 0.02,
+			"i": 0.0,
+			"d": 0.0001,
+			"continuous": true,
+			"inputMin": -180,
+			"inputMax": 180,
+			"tolerance": 2.5
+		},
+		"talons": [
+			{
+				"name": "frontLeft",
+				"port": 1,
+				"limiter": 0.75,
+				"neutralMode": "Coast",
+				"inverted": false
+			},
+			{
+				"name": "frontRight",
+				"port": 2,
+				"limiter": 0.75,
+				"neutralMode": "Coast",
+				"inverted": false
+			}
+		],
+		"victors": [
+			{
+				"name": "backLeft",
+				"port": 3,
+				"limiter": 0.75,
+				"neutralMode": "Coast",
+				"inverted": false
+			},
+			{
+				"name": "backRight",
+				"port": 4,
+				"limiter": 0.75,
+				"neutralMode": "Coast",
+				"inverted": false
+			}
+		],
+		"ahrs": [
+			{
+				"name": "navX",
+				"port": "MXP",
+				"resetOnStart": true
+			}
+		],
+		"differentialDrives": [
+			{
+				"name": "arcade",
+				"leftName": "frontLeft",
+				"rightName": "frontRight"
+			}
+		]
+	}
+}
