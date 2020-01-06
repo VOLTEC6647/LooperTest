@@ -1,6 +1,6 @@
 plugins {
     id "java"
-    id "edu.wpi.first.GradleRIO" version "2020.1.1"
+    id "edu.wpi.first.GradleRIO" version "2020.1.2"
 }
 
 sourceCompatibility = JavaVersion.VERSION_11
@@ -63,14 +63,14 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.0.pr1'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.1'
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.10.0.pr1'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.10.1'
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.10.0.pr1'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.10.1'
 
     // lib6647
-    compile group: 'com.github.pacoito123', name: 'lib6647', version: '9b89030'
+    compile group: 'com.github.pacoito123', name: 'lib6647', version: '56f8ddb'
 
     // Enable simulation gui support. Must check the box in vscode to enable support
     // upon debugging

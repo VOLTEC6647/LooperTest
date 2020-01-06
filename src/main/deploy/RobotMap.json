@@ -47,13 +47,6 @@
 				"port": "MXP",
 				"resetOnStart": true
 			}
-		],
-		"differentialDrives": [
-			{
-				"name": "arcade",
-				"leftName": "frontLeft",
-				"rightName": "frontRight"
-			}
 		]
 	}
 }

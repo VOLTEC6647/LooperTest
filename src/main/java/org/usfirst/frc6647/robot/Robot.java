@@ -21,7 +21,7 @@ public class Robot extends LooperRobot {
 	 * 
 	 * @param robot
 	 */
-	public static void setInstance(Robot robot) {
+	protected static void setInstance(Robot robot) {
 		instance = robot;
 	}
 
@@ -34,7 +34,7 @@ public class Robot extends LooperRobot {
 		return instance;
 	}
 
-	public Robot() {
+	protected Robot() {
 		super(Chassis::new);
 
 		joysticks.put("driver1", new JController(0));
