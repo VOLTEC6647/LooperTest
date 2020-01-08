@@ -17,15 +17,6 @@ public class Robot extends LooperRobot {
 	private static Robot instance;
 
 	/**
-	 * Sets {@link Robot} instance. Should ONLY be set in {@link Main}!
-	 * 
-	 * @param robot
-	 */
-	protected static void setInstance(Robot robot) {
-		instance = robot;
-	}
-
-	/**
 	 * Gets running {@link Robot} instance.
 	 * 
 	 * @return instance
@@ -36,19 +27,8 @@ public class Robot extends LooperRobot {
 
 	protected Robot() {
 		super(Chassis::new);
+		instance = this;
 
 		joysticks.put("driver1", new JController(0));
-	}
-
-	@Override
-	public void robotInit() {
-	}
-
-	@Override
-	public void robotPeriodic() {
-	}
-
-	@Override
-	public void teleopPeriodic() {
 	}
 }
