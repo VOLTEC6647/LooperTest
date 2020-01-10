@@ -1,15 +1,18 @@
 {
 	"chassis": {
-		"pid": {
-			"p": 0.02,
-			"i": 0.0,
-			"d": 0.0001,
-			"period": 0.01,
-			"continuous": true,
-			"inputMin": -180,
-			"inputMax": 180,
-			"tolerance": 2.5
-		},
+		"pid": [
+			{
+				"name": "gyro",
+				"p": 0.02,
+				"i": 0.0,
+				"d": 0.0001,
+				"period": 0.01,
+				"continuous": true,
+				"inputMin": -180,
+				"inputMax": 180,
+				"tolerance": 2.5
+			}
+		],
 		"talons": [
 			{
 				"name": "frontLeft",

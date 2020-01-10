@@ -70,7 +70,7 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.10.1'
 
     // lib6647
-    compile group: 'com.github.pacoito123', name: 'lib6647', version: '8442c6b'
+    compile group: 'com.github.pacoito123', name: 'lib6647', version: '2c64d84'
 
     // Enable simulation gui support. Must check the box in vscode to enable support
     // upon debugging
