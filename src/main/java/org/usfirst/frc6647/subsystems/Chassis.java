@@ -13,7 +13,6 @@ import org.usfirst.lib6647.subsystem.supercomponents.SuperTalon;
 import org.usfirst.lib6647.subsystem.supercomponents.SuperVictor;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpiutil.math.MathUtil;
 
 public class Chassis extends PIDSuperSubsystem implements SuperAHRS, SuperTalon, SuperVictor {
 
@@ -31,21 +30,21 @@ public class Chassis extends PIDSuperSubsystem implements SuperAHRS, SuperTalon,
 	@Override
 	public void registerLoops(ILooper looper) {
 		looper.register(new Loop() {
-			DifferentialDrive drive;
-			JController joystick;
-			AHRS navX;
+			private DifferentialDrive drive;
+			private JController joystick;
+			private int rightAxisX = 5, rightAxisY;
+			private AHRS navX;
 
 			@Override
 			public void onStart(double timestamp) {
 				synchronized (Chassis.this) {
-					System.out.println("Gyro started at: " + timestamp + "!");
-
 					joystick = Robot.getInstance().getJoystick("driver1");
+					rightAxisY = joystick.getName().equals("Wireless Controller") ? 2 : 4;
 					drive = new DifferentialDrive(getTalon("frontLeft"), getTalon("frontRight"));
 					navX = ahrsDevices.get("navX");
 
-					navX.reset();
-					setSetpoint("gyro", navX.getYaw());
+					navX.reset(); // Reset navX every time the Robot is enabled.
+					setSetpoint("gyro", navX.getYaw()); // Set current direction as setpoint.
 				}
 			}
 
@@ -53,13 +52,13 @@ public class Chassis extends PIDSuperSubsystem implements SuperAHRS, SuperTalon,
 			public void onLoop(double timestamp) {
 				synchronized (Chassis.this) {
 					setSetpoint("gyro",
-							Math.abs(joystick.getRawAxis(4)) > 0.15 || Math.abs(joystick.getRawAxis(5)) > 0.15
-									? Math.toDegrees(Math.atan2(joystick.getRawAxis(4), joystick.getRawAxis(5)))
-									: navX.getYaw());
-
-					double output = MathUtil
-							.clamp(getPIDController("gyro").calculate(navX.getYaw(), getSetpoint("gyro")), -1.0, 1.0);
-					drive.arcadeDrive(joystick.getRawAxis(1), output, false);
+							Math.abs(joystick.getRawAxis(rightAxisY)) > 0.15
+									|| Math.abs(joystick.getRawAxis(rightAxisX)) > 0.15
+											? Math.toDegrees(Math.atan2(joystick.getRawAxis(rightAxisY),
+													joystick.getRawAxis(rightAxisX)))
+											: navX.getYaw());
+					double output = getPIDController("gyro").calculate(navX.getYaw());
+					drive.arcadeDrive(joystick.getLeftAxis(), output, false);
 				}
 			}
 

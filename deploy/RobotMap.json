@@ -3,13 +3,16 @@
 		"pid": [
 			{
 				"name": "gyro",
-				"p": 0.02,
+				"p": 0.008,
 				"i": 0.0,
-				"d": 0.0001,
+				"d": 0.001,
 				"period": 0.01,
 				"continuous": true,
 				"inputMin": -180,
 				"inputMax": 180,
+				"outputMin": -1,
+				"outputMax": 1,
+				"fixedValues": true,
 				"tolerance": 2.5
 			}
 		],
@@ -18,14 +21,14 @@
 				"name": "frontLeft",
 				"port": 1,
 				"limiter": 0.75,
-				"neutralMode": "Coast",
+				"neutralMode": "Brake",
 				"inverted": false
 			},
 			{
 				"name": "frontRight",
 				"port": 2,
 				"limiter": 0.75,
-				"neutralMode": "Coast",
+				"neutralMode": "Brake",
 				"inverted": false
 			}
 		],
@@ -34,14 +37,14 @@
 				"name": "backLeft",
 				"port": 3,
 				"limiter": 0.75,
-				"neutralMode": "Coast",
+				"neutralMode": "Brake",
 				"inverted": false
 			},
 			{
 				"name": "backRight",
 				"port": 4,
 				"limiter": 0.75,
-				"neutralMode": "Coast",
+				"neutralMode": "Brake",
 				"inverted": false
 			}
 		],
